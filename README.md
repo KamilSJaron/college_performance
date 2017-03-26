@@ -7,6 +7,12 @@ Yesterday, my colleague shared (this paper)[http://dx.doi.org/10.1371/journal.po
 - drinkers non-smokers
 - drinkers smokers
 
-The mean of GPA of drinkers was non-significantly smaller than mean of GPA of abstinents. However, third category had significantly lower GPA then both other categories.
+The mean of GPA of drinkers was non-significantly smaller than mean of GPA of abstinents. However, third category had significantly lower GPA then both other categories. The aim of this repository is to reanalyse the data in quantitative way (not using those categories). All the analysis will be done in R.
 
-The aim of this repository is to reanalyse the data in quantitative way (not using those categories). All the analysis will be done in R.
+To re-run my stupid analysis you will need: GNU make, R with CRAN packages `prims` and `rpart`. If you get all of those:
+
+```
+make
+```
+
+will recompute everything...
