@@ -1,19 +1,23 @@
 # to load load SPSS data
 library(foreign)
 
-load_one_semeter <- function(semeter, filename = 'data/BARCS_Data_used_for_paper.sav'){
+load_BARCS_data <- function(filename = 'data/BARCS_Data_used_for_paper.sav', semester){
   BARCS <- read.spss(filename, to.data.frame=TRUE)
 
-  BARCS <- BARCS[BARCS$Semester == semeter,]
-  mj_var <- paste0('LOG_Avg_MJ_SEM', semeter)
-  drink_var <- paste0('LOG_Avg_Drinks_SEM', semeter)
+  BARCS <- BARCS[BARCS$Semester == semester,]
 
-  BARCS$avg_mj <- 10^BARCS[, mj_var]
-  BARCS$avg_drinks <- 10^BARCS[, drink_var]
+  for (semester in 1:4){
+    mj_var <- paste0('LOG_Avg_MJ_SEM', semester)
+    drink_var <- paste0('LOG_Avg_Drinks_SEM', semester)
 
-  # delete logarithm variable
-  BARCS[,mj_var] <- c()
-  BARCS[,drink_var] <- c()
+    BARCS[,paste0('avg_mj_s',semester)] <- (10^BARCS[, mj_var]) - 1
+    BARCS[,paste0('avg_drinks_s',semester)] <- (10^BARCS[, drink_var]) - 1
+
+    # delete logarithm variable
+    BARCS[,mj_var] <- c()
+    BARCS[,drink_var] <- c()
+  }
+
 
   # and this variable, which I do not understand
   BARCS$AllSEM_Pattern <- c()

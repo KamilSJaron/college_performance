@@ -5,7 +5,7 @@ semester = commandArgs(trailingOnly=TRUE)
 
 # load function that loads data
 source('scripts/load_data.R')
-BARCS <- load_one_semeter(semester)
+BARCS <- load_BARCS_data(semester = semester)
 
 # I have done more visualisation
 #hist(BARCS$avg_mj_sem1, main = paste("marijuana usage per month"), xlab = "usage", cex.lab=1.2)
